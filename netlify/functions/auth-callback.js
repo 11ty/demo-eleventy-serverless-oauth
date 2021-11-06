@@ -24,6 +24,7 @@ exports.handler = async (event, context) => {
   const state = querystring.parse(event.queryStringParameters.state)
 
   try {
+    console.log( "[auth-callback] Cookies", event.headers.cookie );
     let cookies = cookie.parse(event.headers.cookie);
     if(cookies._csrf !== state.csrf) {
       throw new Error("Missing or invalid CSRF token.");
