@@ -5,7 +5,7 @@ const { getUser } = require("./util/netlify-api");
 
 const EXPIRATION_SECONDS = 60 * 60 * 8; // 8 hours
 
-/* Function to handle netlify auth callback */
+// Function to handle netlify auth callback
 exports.handler = async (event, context) => {
   // Exit early
   if (!event.queryStringParameters) {
@@ -17,10 +17,10 @@ exports.handler = async (event, context) => {
     }
   }
 
-  /* Grant the grant code */
+  // Grant the grant code
   const code = event.queryStringParameters.code;
 
-  /* state helps mitigate CSRF attacks & Restore the previous state of your app */
+  // state helps mitigate CSRF attacks & Restore the previous state of your app
   const state = querystring.parse(event.queryStringParameters.state)
 
   try {
@@ -30,7 +30,7 @@ exports.handler = async (event, context) => {
       throw new Error("Missing or invalid CSRF token.");
     }
 
-    /* Take the grant code and exchange for an accessToken */
+    // Take the grant code and exchange for an accessToken
     const accessToken = await oauth.getToken({
       code: code,
       redirect_uri: config.redirect_uri,
@@ -40,9 +40,12 @@ exports.handler = async (event, context) => {
 
     const token = accessToken.token.access_token;
     console.log( "[auth-callback]", { token } );
+
     // Check that the user exists and is valid.
     const user = await getUser(token);
 
+    // The noop key here is to workaround Netlify keeping query params on redirects
+    // https://answers.netlify.com/t/changes-to-redirects-with-query-string-parameters-are-coming/23436/11
     const URI = `${state.url}?noop#csrf=${state.csrf}`;
     console.log( "[auth-callback]", { URI });
 
