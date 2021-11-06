@@ -43,8 +43,7 @@ exports.handler = async (event, context) => {
     // Check that the user exists and is valid.
     const user = await getUser(token);
 
-    const expiresSeconds = EXPIRATION_SECONDS;
-    const URI = `${state.url}#csrf=${state.csrf}`;
+    const URI = `${state.url}?#csrf=${state.csrf}`;
     console.log( "[auth-callback]", { URI });
 
     /* Redirect user to authorizationURI */
@@ -53,7 +52,7 @@ exports.handler = async (event, context) => {
       headers: {
         Location: URI,
         // This cookie *must* be HttpOnly
-        'Set-Cookie': getCookie("_token", tokens.encode(token), expiresSeconds),
+        'Set-Cookie': getCookie("_token", tokens.encode(token), EXPIRATION_SECONDS),
         'Cache-Control': 'no-cache' // Disable caching of this response
       },
       body: '' // return body for local dev
