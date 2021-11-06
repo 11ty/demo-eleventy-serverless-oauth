@@ -20,6 +20,7 @@ Navigate to http://localhost:8888
 Templates can be secured with the following front matter:
 
 ```
+---
 permalink:
   dynamic: "/YOUR_PATH_HERE/"
 secure:
