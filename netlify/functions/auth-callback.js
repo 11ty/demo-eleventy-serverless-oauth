@@ -24,11 +24,11 @@ exports.handler = async (event, context) => {
   const state = querystring.parse(event.queryStringParameters.state)
 
   try {
-    console.log( "[auth-callback] Cookies", event.headers.cookie );
-    let cookies = cookie.parse(event.headers.cookie);
-    if(cookies._csrf !== state.csrf) {
-      throw new Error("Missing or invalid CSRF token.");
-    }
+    // console.log( "[auth-callback] Cookies", event.headers.cookie );
+    // let cookies = cookie.parse(event.headers.cookie);
+    // if(cookies._csrf !== state.csrf) {
+    //   throw new Error("Missing or invalid CSRF token.");
+    // }
 
     /* Take the grant code and exchange for an accessToken */
     const accessToken = await oauth.getToken({
