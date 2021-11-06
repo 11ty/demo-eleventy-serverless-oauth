@@ -1,0 +1,21 @@
+---
+permalink:
+  dynamic: "/secure/"
+secure:
+  unauthenticatedRedirect: "/"
+---
+<h1>{{ netlifyUser.full_name }}, this page is secure.</h1>
+
+<form action="{{ page.url }}" method="get">
+  <input type="hidden" name="logout" value="">
+  <button type="submit">Logout</button>
+</form>
+
+<br>
+
+<img src="{{ netlifyUser.avatar_url or netlifyUser.avatar }}" alt="Avatar for {{ netlifyUser.full_name }}">
+
+<h2>Your Netlify user information:</h2>
+<pre>
+{{ netlifyUser | dump(2) }}
+</pre>

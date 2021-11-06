@@ -1,0 +1,23 @@
+[build]
+publish = "public"
+command = "npm run build"
+
+[template.environment]
+NETLIFY_OAUTH_CLIENT_ID = "Your Netlify OAuth Client ID"
+NETLIFY_OAUTH_CLIENT_SECRET = "Your Netlify OAuth Client Secret"
+
+[[redirects]]
+from = "/secure/"
+to = "/.netlify/functions/dynamic"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "dynamic"
+
+[[redirects]]
+from = "/"
+to = "/secure/"
+status = 302
+force = true
+
+  [redirects.conditions]
+  Cookie = [ "_token" ]

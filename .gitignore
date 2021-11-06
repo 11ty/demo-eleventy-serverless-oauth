@@ -1,0 +1,8 @@
+.env
+.cache
+node_modules
+_site
+package-lock.json
+.netlify
+netlify/functions/dynamic/**
+!netlify/functions/dynamic/index.js
