@@ -36,3 +36,5 @@ Not all providers are required. You can use one or more providers. If you only w
 2. Add your environment variables to your `.env` file:
     * `NETLIFY_OAUTH_CLIENT_ID` and `NETLIFY_OAUTH_CLIENT_SECRET` are required for `Login with Netlify`
     * `GITHUB_OAUTH_CLIENT_ID` and `GITHUB_OAUTH_CLIENT_SECRET` are required for `Login with GitHub`
+
+Warning: for local development you may need to set your Redirect URI in your OAuth application to `http://localhost:8888/.netlify/functions/auth-callback` temporarily.
