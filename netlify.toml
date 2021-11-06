@@ -1,5 +1,5 @@
 [build]
-publish = "public"
+publish = "_site"
 command = "npm run build"
 
 [template.environment]
