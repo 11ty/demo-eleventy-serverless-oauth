@@ -1,7 +1,6 @@
 const cookie = require("cookie");
 const querystring = require("querystring");
 const { config, oauth, tokens, getCookie } = require("./util/auth.js");
-const { getUser } = require("./util/netlify-api");
 
 const EXPIRATION_SECONDS = 60 * 60 * 8; // 8 hours
 
@@ -40,9 +39,6 @@ exports.handler = async (event, context) => {
 
     const token = accessToken.token.access_token;
     console.log( "[auth-callback]", { token } );
-
-    // Check that the user exists and is valid.
-    const user = await getUser(token);
 
     // The noop key here is to workaround Netlify keeping query params on redirects
     // https://answers.netlify.com/t/changes-to-redirects-with-query-string-parameters-are-coming/23436/11
