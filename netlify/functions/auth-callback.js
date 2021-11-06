@@ -43,7 +43,7 @@ exports.handler = async (event, context) => {
     // Check that the user exists and is valid.
     const user = await getUser(token);
 
-    const URI = `${state.url}?#csrf=${state.csrf}`;
+    const URI = `${state.url}?noop#csrf=${state.csrf}`;
     console.log( "[auth-callback]", { URI });
 
     /* Redirect user to authorizationURI */
