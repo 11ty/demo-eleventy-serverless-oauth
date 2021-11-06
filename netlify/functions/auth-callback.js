@@ -1,8 +1,6 @@
 const cookie = require("cookie");
 const querystring = require("querystring");
-const { config, oauth, tokens, getCookie } = require("./util/auth.js");
-
-const EXPIRATION_SECONDS = 60 * 60 * 8; // 8 hours
+const { OAuth, tokens, getCookie } = require("./util/auth.js");
 
 // Function to handle netlify auth callback
 exports.handler = async (event, context) => {
@@ -29,8 +27,11 @@ exports.handler = async (event, context) => {
       throw new Error("Missing or invalid CSRF token.");
     }
 
+    let oauth = new OAuth(state.provider);
+    let config = oauth.config;
+
     // Take the grant code and exchange for an accessToken
-    const accessToken = await oauth.getToken({
+    const accessToken = await oauth.authorizationCode.getToken({
       code: code,
       redirect_uri: config.redirect_uri,
       client_id: config.clientId,
@@ -50,9 +51,14 @@ exports.handler = async (event, context) => {
       statusCode: 302,
       headers: {
         Location: URI,
-        // This cookie *must* be HttpOnly
-        'Set-Cookie': getCookie("_token", tokens.encode(token), EXPIRATION_SECONDS),
         'Cache-Control': 'no-cache' // Disable caching of this response
+      },
+      multiValueHeaders: {
+        'Set-Cookie': [
+          // This cookie *must* be HttpOnly
+          getCookie("_token", tokens.encode(token), oauth.config.sessionExpiration),
+          getCookie("_provider", state.provider, oauth.config.sessionExpiration),
+        ]
       },
       body: '' // return body for local dev
     }

@@ -30,5 +30,10 @@ secure:
 
 ### Infrastructure
 
-1. Create your OAuth app (this demo uses [Netlify OAuth](https://app.netlify.com/user/applications))
-2. Add your environment variables to your `.env` file: e.g. `OAUTH_CLIENT_ID` and `OAUTH_CLIENT_SECRET`
+1. Create your OAuth app
+  * [Netlify OAuth](https://app.netlify.com/user/applications)
+  * [GitHub OAuth](https://github.com/settings/applications/new)
+2. Add your environment variables to your `.env` file:
+  * `NETLIFY_OAUTH_CLIENT_ID` and `NETLIFY_OAUTH_CLIENT_SECRET` are required for `Login with Netlify`
+  * `GITHUB_OAUTH_CLIENT_ID` and `GITHUB_OAUTH_CLIENT_SECRET` are required for `Login with GitHub`
+  * If you only want a subset of these providers, just remove the Login buttons that you don’t want and don’t worry about the environment variables for that provider.

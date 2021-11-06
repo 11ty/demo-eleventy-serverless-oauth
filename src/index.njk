@@ -1,5 +1,6 @@
 <form action="/.netlify/functions/auth" data-netlify-oauth>
   <input type="hidden" name="_auth_csrf" value="">
   <input type="hidden" name="url" value="{{ metadata.origin }}{{ page.url | url }}secure/">
-  <button type="submit">Login with Netlify</button>
+  <button type="submit" name="provider" value="netlify">Login with Netlify</button>
+  <button type="submit" name="provider" value="github">Login with GitHub</button>
 </form>
