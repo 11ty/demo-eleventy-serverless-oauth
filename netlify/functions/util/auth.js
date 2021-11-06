@@ -64,7 +64,7 @@ module.exports = {
     let options = {
       httpOnly: true,
       secure: true,
-      sameSite: "strict",
+      sameSite: "Lax",
       path: '/',
       maxAge: expiration,
     };

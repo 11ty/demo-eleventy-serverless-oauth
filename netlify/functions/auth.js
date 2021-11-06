@@ -24,13 +24,13 @@ exports.handler = async (event, context) => {
     state: `url=${redirectUrl}&csrf=${csrfToken}`,
   });
 
-  // console.log( "[auth-start] SETTING COOKIE" );
+  console.log( "[auth-start] SETTING COOKIE" );
 
   /* Redirect user to authorizationURI */
   return {
     statusCode: 302,
     headers: {
-      // 'Set-Cookie': getCookie("_csrf", csrfToken, 60*2), // 2 minutes
+      'Set-Cookie': getCookie("_csrf", csrfToken, 60*2), // 2 minutes
       Location: authorizationURI,
       'Cache-Control': 'no-cache' // Disable caching of this response
     },
