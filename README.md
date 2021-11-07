@@ -30,13 +30,13 @@ Does not have to be in a serverless template. Put it in a shared header on your 
 
 ```
 <form action="/.netlify/functions/auth-before">
-  <input type="hidden" name="secureUrl" value="https://demo-eleventy-serverless-oauth.netlify.app/YOUR_PATH_HERE/">
+  <input type="hidden" name="securePath" value="/YOUR_PATH_HERE/">
   <button type="submit" name="provider" value="netlify">Login with Netlify</button>
   <button type="submit" name="provider" value="github">Login with GitHub</button>
 </form>
 ```
 
-`secureUrl` should contain the URL to the secured serverless template (see next section).
+`securePath` should contain the URL to the secured serverless template (see next section).
 
 ### Secure Serverless Template
 

@@ -13,11 +13,12 @@ exports.handler = async (event, context) => {
   }
 
   const csrfToken = generateCsrfToken();
-  const redirectUrl = event.queryStringParameters.secureUrl;
   const provider = event.queryStringParameters.provider;
-
+  
   let oauth = new OAuth(provider);
   let config = oauth.config;
+
+  const redirectUrl = (new URL(event.queryStringParameters.securePath, config.secureHost)).toString();
 
   /* Generate authorizationURI */
   const authorizationURI = oauth.authorizationCode.authorizeURL({

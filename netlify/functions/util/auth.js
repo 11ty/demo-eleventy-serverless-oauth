@@ -51,6 +51,7 @@ class OAuth {
 
   get config() {
     const cfg = {
+      secureHost: SITE_URL,
       sessionExpiration: 60 * 60 * 8, // in seconds, this is 8 hours
 
       /* redirect_uri is the callback url after successful signin */
