@@ -19,7 +19,10 @@ The full login flow is supported on localhost, assuming the Redirect URI set in 
 
 ## Configuration
 
-You will need a static login form (example below) and a secure serverless template.
+You will need a:
+* static login form
+* a secure serverless template
+* an OAuth Application provider
 
 ### Static login form
 
@@ -48,9 +51,9 @@ secure:
 ---
 ```
 
-### Infrastructure
+### OAuth Application Providers
 
-This example includes both a Netlify and GitHub provider. You can use one or more of these providers. If you only want a subset of these providers, just remove the Login buttons that you don’t want and don’t worry about the relevant environment variables for that provider.
+This example includes providers via Netlify and GitHub. You can use one or more of these providers. If you only want a subset of these providers, just remove the Login buttons that you don’t want and don’t worry about the relevant environment variables for that provider.
 
 1. Create your OAuth application: [Netlify OAuth](https://app.netlify.com/user/applications) and/or [GitHub OAuth](https://github.com/settings/applications/new)
 2. Add the appropriate environment variables to your `.env` file:
