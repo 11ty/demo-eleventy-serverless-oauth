@@ -1,5 +1,5 @@
 <form action="/.netlify/functions/auth-before" data-netlify-oauth>
-  <input type="hidden" name="url" value="{{ metadata.origin }}{{ page.url | url }}secure/">
+  <input type="hidden" name="secureUrl" value="{{ metadata.origin }}{{ page.url | url }}secure/">
   <button type="submit" name="provider" value="netlify">Login with Netlify</button>
   <button type="submit" name="provider" value="github">Login with GitHub</button>
 </form>

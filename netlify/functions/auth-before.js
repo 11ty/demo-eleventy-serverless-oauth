@@ -13,7 +13,7 @@ exports.handler = async (event, context) => {
   }
 
   const csrfToken = generateCsrfToken();
-  const redirectUrl = event.queryStringParameters.url;
+  const redirectUrl = event.queryStringParameters.secureUrl;
   const provider = event.queryStringParameters.provider;
 
   let oauth = new OAuth(provider);
