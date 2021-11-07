@@ -1,4 +1,4 @@
-const { OAuth, getCookie } = require("./util/auth.js");
+const { OAuth, getCookie, generateCsrfToken } = require("./util/auth.js");
 
 /* Do initial auth redirect */
 exports.handler = async (event, context) => {
@@ -12,7 +12,7 @@ exports.handler = async (event, context) => {
     }
   }
 
-  const csrfToken = event.queryStringParameters._auth_csrf;
+  const csrfToken = generateCsrfToken();
   const redirectUrl = event.queryStringParameters.url;
   const provider = event.queryStringParameters.provider;
 
