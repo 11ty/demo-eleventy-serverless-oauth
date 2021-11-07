@@ -51,6 +51,13 @@ secure:
 ---
 ```
 
+You may need to familiarize yourself with [Eleventy Serverless templates](https://www.11ty.dev/docs/plugins/serverless/#usage).
+
+Relevant files:
+* `.eleventy.js` adds the bundler plugin for the `dynamic` permalink.
+* The OAuth specific serverless function code: `netlify/functions/dynamic/index.js`
+* The relevant entries in `.gitignore`
+
 ### OAuth Application Providers
 
 This example includes providers via Netlify and GitHub. You can use one or more of these providers. If you only want a subset of these providers, just remove the Login buttons that you don’t want and don’t worry about the relevant environment variables for that provider.
