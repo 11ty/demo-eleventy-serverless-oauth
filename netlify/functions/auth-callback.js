@@ -58,6 +58,7 @@ exports.handler = async (event, context) => {
           // This cookie *must* be HttpOnly
           getCookie("_token", tokens.encode(token), oauth.config.sessionExpiration),
           getCookie("_provider", state.provider, oauth.config.sessionExpiration),
+          getCookie("_csrf", "", -1),
         ]
       },
       body: '' // return body for local dev
