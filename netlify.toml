@@ -16,4 +16,4 @@ status = 302
 force = true
 
   [redirects.conditions]
-  Cookie = [ "_token" ]
+  Cookie = [ "_11ty_oauth_token" ]

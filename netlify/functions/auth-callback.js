@@ -23,7 +23,7 @@ exports.handler = async (event, context) => {
   try {
     console.log( "[auth-callback] Cookies", event.headers.cookie );
     let cookies = cookie.parse(event.headers.cookie);
-    if(cookies._csrf !== state.csrf) {
+    if(cookies._11ty_oauth_csrf !== state.csrf) {
       throw new Error("Missing or invalid CSRF token.");
     }
 
@@ -56,9 +56,9 @@ exports.handler = async (event, context) => {
       multiValueHeaders: {
         'Set-Cookie': [
           // This cookie *must* be HttpOnly
-          getCookie("_token", tokens.encode(token), oauth.config.sessionExpiration),
-          getCookie("_provider", state.provider, oauth.config.sessionExpiration),
-          getCookie("_csrf", "", -1),
+          getCookie("_11ty_oauth_token", tokens.encode(token), oauth.config.sessionExpiration),
+          getCookie("_11ty_oauth_provider", state.provider, oauth.config.sessionExpiration),
+          getCookie("_11ty_oauth_csrf", "", -1),
         ]
       },
       body: '' // return body for local dev

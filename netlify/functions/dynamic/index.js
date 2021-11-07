@@ -12,11 +12,11 @@ async function handler(event) {
   if(event.headers) {
     // console.log( "[serverless fn] cookies", event.headers.cookie );
     let cookies = cookie.parse(event.headers.cookie);
-    if(cookies._token) {
-      authToken = tokens.decode(cookies._token);
+    if(cookies._11ty_oauth_token) {
+      authToken = tokens.decode(cookies._11ty_oauth_token);
     }
-    if(cookies._provider) {
-      provider = cookies._provider;
+    if(cookies._11ty_oauth_provider) {
+      provider = cookies._11ty_oauth_provider;
     }
   }
 
@@ -58,8 +58,8 @@ async function handler(event) {
         },
         multiValueHeaders: {
           'Set-Cookie': [
-            getCookie("_token", "", -1),
-            getCookie("_provider", "", -1),
+            getCookie("_11ty_oauth_token", "", -1),
+            getCookie("_11ty_oauth_provider", "", -1),
           ]
         },
         body: ''
