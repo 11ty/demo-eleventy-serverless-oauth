@@ -15,9 +15,29 @@ npm run dev
 
 Navigate to http://localhost:8888
 
+The full login flow is supported on localhost, assuming the Redirect URI set in your OAuth Application is configured correctly.
+
 ## Configuration
 
-Templates can be secured with the following front matter:
+You will need a static login form (example below) and a secure serverless template.
+
+### Static login form
+
+Does not have to be in a serverless template. Put it in a shared header on your site!
+
+```
+<form action="/.netlify/functions/auth-before">
+  <input type="hidden" name="secureUrl" value="https://demo-eleventy-serverless-oauth.netlify.app/YOUR_PATH_HERE/">
+  <button type="submit" name="provider" value="netlify">Login with Netlify</button>
+  <button type="submit" name="provider" value="github">Login with GitHub</button>
+</form>
+```
+
+`secureUrl` should contain the URL to the secured serverless template (see next section).
+
+### Secure Serverless Template
+
+Serverless templates can be secured with the following front matter (this example is YAML):
 
 ```
 ---
@@ -30,11 +50,11 @@ secure:
 
 ### Infrastructure
 
-Not all providers are required. You can use one or more providers. If you only want a subset of these providers, just remove the Login buttons that you don’t want and don’t worry about the environment variables for that provider.
+This example includes both a Netlify and GitHub provider. You can use one or more of these providers. If you only want a subset of these providers, just remove the Login buttons that you don’t want and don’t worry about the relevant environment variables for that provider.
 
-1. Create your OAuth app: [Netlify OAuth](https://app.netlify.com/user/applications) and/or [GitHub OAuth](https://github.com/settings/applications/new)
-2. Add your environment variables to your `.env` file:
+1. Create your OAuth application: [Netlify OAuth](https://app.netlify.com/user/applications) and/or [GitHub OAuth](https://github.com/settings/applications/new)
+2. Add the appropriate environment variables to your `.env` file:
     * `NETLIFY_OAUTH_CLIENT_ID` and `NETLIFY_OAUTH_CLIENT_SECRET` are required for `Login with Netlify`
     * `GITHUB_OAUTH_CLIENT_ID` and `GITHUB_OAUTH_CLIENT_SECRET` are required for `Login with GitHub`
 
-Warning: for local development you may need to set your Redirect URI in your OAuth application to `http://localhost:8888/.netlify/functions/auth-callback` temporarily.
+Warning: for local development you may need to set your Redirect URI in your OAuth application (configured through the provider web UI) to `http://localhost:8888/.netlify/functions/auth-callback` temporarily.
