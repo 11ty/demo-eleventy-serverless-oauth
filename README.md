@@ -67,4 +67,4 @@ This example includes providers via Netlify and GitHub. You can use one or more 
     * `NETLIFY_OAUTH_CLIENT_ID` and `NETLIFY_OAUTH_CLIENT_SECRET` are required for `Login with Netlify`
     * `GITHUB_OAUTH_CLIENT_ID` and `GITHUB_OAUTH_CLIENT_SECRET` are required for `Login with GitHub`
 
-Warning: for local development you may need to set your Redirect URI in your OAuth application (configured through the provider web UI) to `http://localhost:8888/.netlify/functions/auth-callback` temporarily.
+Tip: I like to set up two OAuth applications, one for production and one for local development so that I don’t have to worry about juggling the different Redirect URIs in the provider’s web interface. e.g. this will need to be `http://localhost:8888/.netlify/functions/auth-callback` for local development.
