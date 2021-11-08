@@ -4,32 +4,7 @@ const fetch = require('node-fetch')
 
 const SITE_URL = process.env.URL || 'http://localhost:8888'
 
-const netlifyConfig = {
-  clientIdKey: "NETLIFY_OAUTH_CLIENT_ID",
-  clientSecretKey: "NETLIFY_OAUTH_CLIENT_SECRET",
-
-  /* OAuth API endpoints */
-  tokenHost: 'https://api.netlify.com',
-  tokenPath: 'https://api.netlify.com/oauth/token',
-  authorizePath: 'https://app.netlify.com/authorize',
-
-  /* User API endpoint */
-  userApi: "https://api.netlify.com/api/v1/user/",
-};
-
-// https://docs.github.com/en/developers/apps/building-oauth-apps/authorizing-oauth-apps
-const githubConfig = {
-  clientIdKey: "GITHUB_OAUTH_CLIENT_ID",
-  clientSecretKey: "GITHUB_OAUTH_CLIENT_SECRET",
-
-  /* OAuth API endpoints */
-  tokenHost: "https://github.com/",
-  tokenPath: "https://github.com/login/oauth/access_token",
-  authorizePath: "https://github.com/login/oauth/authorize",
-
-  /* User API endpoint */
-  userApi: "https://api.github.com/user",
-};
+const providers = require('./providers.js');
 
 class OAuth {
   constructor(provider) {
@@ -59,11 +34,13 @@ class OAuth {
     }
 
     if(this.provider === "netlify") {
-      Object.assign(cfg, netlifyConfig);
+      Object.assign(cfg, providers.netlify);
     } else if(this.provider === "github") {
-      Object.assign(cfg, githubConfig);
+      Object.assign(cfg, providers.github);
+    } else if(this.provider === "gitlab") {
+      Object.assign(cfg, providers.gitlab);
     } else {
-      throw new Error("Invalid provider passed to OAuth. Currently only `netlify` or `github` are supported.")
+      throw new Error("Invalid provider passed to OAuth. Currently only `netlify`, `github` or `gitlab` are supported.")
     }
 
     cfg.clientId = process.env[cfg.clientIdKey];
