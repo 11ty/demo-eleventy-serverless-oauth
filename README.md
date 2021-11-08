@@ -62,9 +62,10 @@ Relevant files:
 
 This example includes providers via Netlify and GitHub. You can use one or more of these providers. If you only want a subset of these providers, just remove the Login buttons that you don’t want and don’t worry about the relevant environment variables for that provider.
 
-1. Create your OAuth application: [Netlify OAuth](https://app.netlify.com/user/applications) and/or [GitHub OAuth](https://github.com/settings/applications/new)
+1. Create one or more OAuth applications: [Netlify OAuth](https://app.netlify.com/user/applications), [GitHub OAuth](https://github.com/settings/applications/new), [GitLab](https://gitlab.com/-/profile/applications)
 2. Add the appropriate environment variables to your `.env` file:
     * `NETLIFY_OAUTH_CLIENT_ID` and `NETLIFY_OAUTH_CLIENT_SECRET` are required for `Login with Netlify`
     * `GITHUB_OAUTH_CLIENT_ID` and `GITHUB_OAUTH_CLIENT_SECRET` are required for `Login with GitHub`
+    * `GITLAB_OAUTH_CLIENT_ID` and `GITLAB_OAUTH_CLIENT_SECRET` are required for `Login with GitLab`
 
 Tip: I like to set up two OAuth applications, one for production and one for local development so that I don’t have to worry about juggling the different Redirect URIs in the provider’s web interface. e.g. this will need to be `http://localhost:8888/.netlify/functions/auth-callback` for local development.
