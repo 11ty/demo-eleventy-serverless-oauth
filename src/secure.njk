@@ -4,7 +4,7 @@ permalink:
 secure:
   unauthenticatedRedirect: "/"
 ---
-<h1>{{ user.name or user.full_name }}, this page is secure.</h1>
+<h2>{{ user.name or user.full_name }}, this page is secure.</h2>
 
 <form action="{{ page.url }}" method="get">
   <input type="hidden" name="logout" value="">
@@ -15,7 +15,7 @@ secure:
 
 <img src="{{ user.avatar_url or user.avatar }}" alt="Avatar for {{ user.name or user.full_name }}">
 
-<h2>Your user information:</h2>
+<h3>Your user information:</h3>
 <pre>
 {{ user | dump(2) }}
 </pre>
