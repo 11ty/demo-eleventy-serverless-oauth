@@ -30,7 +30,7 @@ exports.handler = async (event, context) => {
     state: `url=${redirectUrl}&csrf=${csrfToken}&provider=${provider}`,
   });
 
-  console.log( "[auth-start] SETTING COOKIE" );
+  // console.log( "[auth-start] SETTING COOKIE" );
 
   /* Redirect user to authorizationURI */
   return {

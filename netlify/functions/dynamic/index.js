@@ -48,7 +48,7 @@ async function handler(event) {
     let [ page ] = await elev.getOutput();
 
     if("logout" in event.queryStringParameters) {
-      console.log( "Logging out" );
+      // console.log( "Logging out" );
       return {
         statusCode: 302,
         headers: {
