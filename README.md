@@ -22,7 +22,7 @@ The full login flow is supported on localhost, assuming the Redirect URI set in 
 This example includes Netlify, GitHub, and GitLab providers. If you only want a subset of these providers, just remove the Login buttons that you don’t want and don’t worry about the relevant environment variables for that provider.
 
 1. Create one or more OAuth applications:
-    * [Netlify OAuth](https://app.netlify.com/user/applications)
+    * [Netlify OAuth](https://app.netlify.com/user/applications/new)
     * [GitHub OAuth](https://github.com/settings/applications/new)
     * [GitLab](https://gitlab.com/-/profile/applications)
 2. Add the appropriate environment variables to your `.env` file:
