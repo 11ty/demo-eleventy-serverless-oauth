@@ -68,7 +68,11 @@ secure:
 You may need to familiarize yourself with [Eleventy Serverless templates](https://www.11ty.dev/docs/plugins/serverless/#usage).
 
 Relevant files:
-* `.eleventy.js` adds the bundler plugin for the `dynamic` permalink.
-* The OAuth specific serverless function code: `netlify/functions/dynamic/index.js`
-* The relevant entries in `.gitignore`
-
+* `.eleventy.js` adds the Elventy Serverless bundler plugin for the `dynamic` permalink.
+* Eleventy Serverless `.gitignore` additions: `netlify/functions/dynamic/**` and 
+`!netlify/functions/dynamic/index.js`
+* Copy to your project:
+  * `netlify/functions/dynamic/index.js`
+  * `netlify/functions/util/*`
+  * `netlify/functions/auth-before.js`
+  * `netlify/functions/auth-callback.js`

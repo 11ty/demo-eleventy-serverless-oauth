@@ -10,7 +10,6 @@ async function handler(event) {
   let authToken;
   let provider;
   if(event.headers) {
-    // console.log( "[serverless fn] cookies", event.headers.cookie );
     let cookies = cookie.parse(event.headers.cookie);
     if(cookies._11ty_oauth_token) {
       authToken = tokens.decode(cookies._11ty_oauth_token);
