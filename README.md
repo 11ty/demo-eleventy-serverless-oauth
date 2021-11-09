@@ -17,12 +17,26 @@ Navigate to http://localhost:8888
 
 The full login flow is supported on localhost, assuming the Redirect URI set in your OAuth Application is configured correctly.
 
-## Configuration
+## OAuth Application Providers
+
+This example includes Netlify, GitHub, and GitLab providers. If you only want a subset of these providers, just remove the Login buttons that you don’t want and don’t worry about the relevant environment variables for that provider.
+
+1. Create one or more OAuth applications:
+    * [Netlify OAuth](https://app.netlify.com/user/applications)
+    * [GitHub OAuth](https://github.com/settings/applications/new)
+    * [GitLab](https://gitlab.com/-/profile/applications)
+2. Add the appropriate environment variables to your `.env` file:
+    * Netlify: `NETLIFY_OAUTH_CLIENT_ID` and `NETLIFY_OAUTH_CLIENT_SECRET`
+    * GitHub: `GITHUB_OAUTH_CLIENT_ID` and `GITHUB_OAUTH_CLIENT_SECRET`
+    * GitLab: `GITLAB_OAUTH_CLIENT_ID` and `GITLAB_OAUTH_CLIENT_SECRET`
+
+Tip: I like to set up two OAuth applications, one for production and one for local development so that I don’t have to worry about juggling the different Redirect URIs in the provider’s web interface. e.g. this will need to be `http://localhost:8888/.netlify/functions/auth-callback` for local development.
+
+## Add this to your Eleventy site
 
 You will need a:
 * static login form
 * a secure serverless template
-* an OAuth Application provider
 
 ### Static login form
 
@@ -58,14 +72,3 @@ Relevant files:
 * The OAuth specific serverless function code: `netlify/functions/dynamic/index.js`
 * The relevant entries in `.gitignore`
 
-### OAuth Application Providers
-
-This example includes providers via Netlify and GitHub. You can use one or more of these providers. If you only want a subset of these providers, just remove the Login buttons that you don’t want and don’t worry about the relevant environment variables for that provider.
-
-1. Create one or more OAuth applications: [Netlify OAuth](https://app.netlify.com/user/applications), [GitHub OAuth](https://github.com/settings/applications/new), [GitLab](https://gitlab.com/-/profile/applications)
-2. Add the appropriate environment variables to your `.env` file:
-    * `NETLIFY_OAUTH_CLIENT_ID` and `NETLIFY_OAUTH_CLIENT_SECRET` are required for `Login with Netlify`
-    * `GITHUB_OAUTH_CLIENT_ID` and `GITHUB_OAUTH_CLIENT_SECRET` are required for `Login with GitHub`
-    * `GITLAB_OAUTH_CLIENT_ID` and `GITLAB_OAUTH_CLIENT_SECRET` are required for `Login with GitLab`
-
-Tip: I like to set up two OAuth applications, one for production and one for local development so that I don’t have to worry about juggling the different Redirect URIs in the provider’s web interface. e.g. this will need to be `http://localhost:8888/.netlify/functions/auth-callback` for local development.
