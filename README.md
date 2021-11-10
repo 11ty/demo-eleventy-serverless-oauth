@@ -52,7 +52,7 @@ Does not have to be in a serverless template. Put it in a shared header on your 
 
 `securePath` should contain the URL to the secured serverless template (see next section).
 
-### Secure Serverless Template
+### Serverless Templates
 
 Serverless templates can be secured with the following front matter (this example is YAML):
 
@@ -64,6 +64,27 @@ secure:
   unauthenticatedRedirect: "/"
 ---
 ```
+
+The above will secure the path and redirect any unauthenticated requests to the URL of your choosing.
+
+You can also conditionally render content inside of an insecure serverless template. Just check for the `user` global (you can rename this in `netlify/functions/dynamic/index.js`). Here’s an example of that:
+
+```
+---
+permalink:
+  dynamic: "/"
+---
+{% if user %}
+You are logged in!
+<!-- Show Logout form -->
+{% else %}
+<!-- Show Login form -->
+{% endif %} 
+```
+
+You can see an example of this in [the `everything-serverless` branch](https://github.com/11ty/demo-eleventy-serverless-oauth/compare/everything-serverless).
+
+#### More detail
 
 You may need to familiarize yourself with [Eleventy Serverless templates](https://www.11ty.dev/docs/plugins/serverless/#usage).
 
