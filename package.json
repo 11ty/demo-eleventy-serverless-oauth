@@ -4,7 +4,7 @@
   "description": "A demo showing how to implement OAuth using Eleventy Serverless (on Netlify)",
   "scripts": {
     "build": "npx @11ty/eleventy",
-    "start": "netlify dev",
+    "start": "npx @11ty/eleventy --serve",
     "dev": "netlify dev"
   },
   "keywords": [],
