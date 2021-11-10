@@ -1,4 +1,4 @@
-# eleventy-demo-serverless-oauth
+# demo-eleventy-serverless-oauth
 
 A demo project using OAuth to secure some of your Eleventy Serverless routes.
 

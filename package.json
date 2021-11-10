@@ -1,15 +1,19 @@
 {
-  "name": "eleventy-demo-serverless-oauth",
+  "name": "demo-eleventy-serverless-oauth",
   "version": "1.0.0",
   "description": "A demo showing how to implement OAuth using Eleventy Serverless (on Netlify)",
   "scripts": {
     "build": "npx @11ty/eleventy",
-    "start": "npx @11ty/eleventy --serve",
+    "start": "netlify dev",
     "dev": "netlify dev"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Zach Leatherman",
+    "email": "zachleatherman@gmail.com",
+    "url": "https://zachleat.com/"
+  },
+  "license": "MIT",
   "devDependencies": {
     "netlify-cli": "^6.14.7"
   },
