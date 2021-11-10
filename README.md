@@ -72,7 +72,7 @@ You can also conditionally render content inside of an insecure serverless templ
 ```
 ---
 permalink:
-  dynamic: "/"
+  dynamic: "/YOUR_PATH_HERE/"
 ---
 {% if user %}
 You are logged in!
