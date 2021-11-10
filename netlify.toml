@@ -11,9 +11,7 @@ _generated_by_eleventy_serverless = "dynamic"
 
 [[redirects]]
 from = "/"
-to = "/secure/"
-status = 302
+to = "/.netlify/functions/dynamic"
+status = 200
 force = true
-
-  [redirects.conditions]
-  Cookie = [ "_11ty_oauth_token" ]
+_generated_by_eleventy_serverless = "dynamic"
