@@ -6,12 +6,7 @@ secure:
 ---
 <h2>{{ user.name or user.full_name }}, this page is secure.</h2>
 
-<form action="{{ page.url }}" method="get">
-  <input type="hidden" name="logout" value="">
-  <button type="submit">Logout</button>
-</form>
-
-<br>
+{% include "logout.njk" %}
 
 <img src="{{ user.avatar_url or user.avatar }}" alt="Avatar for {{ user.name or user.full_name }}">
 

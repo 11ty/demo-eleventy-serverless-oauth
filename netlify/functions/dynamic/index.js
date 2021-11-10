@@ -33,13 +33,11 @@ async function handler(event) {
     query: event.queryStringParameters,
     functionsDir: "./netlify/functions/",
     config: function(eleventyConfig) {
-      if(authToken) {
-        eleventyConfig.addGlobalData("authToken", authToken);
-      }
       if(user) {
         eleventyConfig.addGlobalData("user", user);
       }
 
+      // Adds `secure` data to JSON output
       eleventyConfig.dataFilterSelectors.add("secure");
     }
   });
@@ -48,11 +46,16 @@ async function handler(event) {
     let [ page ] = await elev.getOutput();
 
     if("logout" in event.queryStringParameters) {
+      let redirectTarget = page.url; // default redirect to self
+      if(page.data.secure && page.data.secure.unauthenticatedRedirect) {
+        redirectTarget = page.data.secure.unauthenticatedRedirect;
+      }
+
       // console.log( "Logging out" );
       return {
         statusCode: 302,
         headers: {
-          Location: page.data.secure.unauthenticatedRedirect || "/",
+          Location: redirectTarget,
           'Cache-Control': 'no-cache' // Disable caching of this response
         },
         multiValueHeaders: {
