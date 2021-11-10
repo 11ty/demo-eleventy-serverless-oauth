@@ -2,9 +2,13 @@
 
 A demo project using OAuth to secure some of your Eleventy Serverless routes.
 
-1. [Demo on Netlify](https://demo-eleventy-serverless-oauth.netlify.app)
+1. [Demo](https://demo-eleventy-serverless-oauth.netlify.app)
 1. [Deploy your own to Netlify](https://app.netlify.com/start/deploy?repository=https://github.com/11ty/demo-eleventy-serverless-oauth)
 
+---
+
+* [Blog post on zachleat.com](https://www.zachleat.com/web/eleventy-login/)
+* [Walk-through on YouTube](https://www.youtube.com/watch?v=At19o2Ox57Y)
 
 ## Run locally
 
