@@ -29,14 +29,14 @@ This example includes Netlify, GitHub, and GitLab providers. If you only want a 
     * [Netlify OAuth](https://app.netlify.com/user/applications/new)
     * [GitHub OAuth](https://github.com/settings/applications/new)
     * [GitLab](https://gitlab.com/-/profile/applications)
-    * [Slack](https://api.slack.com/apps)
+    * [Slack](https://api.slack.com/apps) (Redirect URI must be specified in separate Oauth & Permissions section)
 2. Add the appropriate environment variables to your `.env` file:
     * Netlify: `NETLIFY_OAUTH_CLIENT_ID` and `NETLIFY_OAUTH_CLIENT_SECRET`
     * GitHub: `GITHUB_OAUTH_CLIENT_ID` and `GITHUB_OAUTH_CLIENT_SECRET`
     * GitLab: `GITLAB_OAUTH_CLIENT_ID` and `GITLAB_OAUTH_CLIENT_SECRET`
     * Slack: `SLACK_OAUTH_CLIENT_ID` and `SLACK_OAUTH_CLIENT_SECRET`
 
-Note that, for netlify deployment you'll need to add these environment variables to your netlify site by defining them in Settings -> Build & Deploy -> Environment.
+For Netlify deployment you'll need to add these environment variables by defining them in Settings -> Build & Deploy -> Environment.
 
 Tip: I like to set up two OAuth applications, one for production and one for local development so that I don’t have to worry about juggling the different Redirect URIs in the provider’s web interface. e.g. this will need to be `http://localhost:8888/.netlify/functions/auth-callback` for local development.
 

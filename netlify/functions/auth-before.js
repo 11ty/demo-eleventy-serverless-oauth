@@ -21,9 +21,6 @@ exports.handler = async (event, context) => {
 
   const redirectUrl = (new URL(event.queryStringParameters.securePath, config.secureHost)).toString();
 
-  console.log( { redirectUrl } );
-  console.log( config.redirect_uri );
-
   /* Generate authorizationURI */
   const authorizationURI = oauth.authorizationCode.authorizeURL({
     redirect_uri: config.redirect_uri,
