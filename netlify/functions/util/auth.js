@@ -39,8 +39,10 @@ class OAuth {
       Object.assign(cfg, providers.github);
     } else if(this.provider === "gitlab") {
       Object.assign(cfg, providers.gitlab);
+    } else if(this.provider === "slack") {
+      Object.assign(cfg, providers.slack);
     } else {
-      throw new Error("Invalid provider passed to OAuth. Currently only `netlify`, `github` or `gitlab` are supported.")
+      throw new Error("Invalid provider passed to OAuth. Currently only `netlify`, `github`, `gitlab` or `slack` are supported.")
     }
 
     cfg.clientId = process.env[cfg.clientIdKey];

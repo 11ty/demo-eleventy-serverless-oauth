@@ -43,8 +43,25 @@ const gitlab = {
   
 }
 
+const slack = {
+  clientIdKey: "SLACK_OAUTH_CLIENT_ID",
+  clientSecretKey: "SLACK_OAUTH_CLIENT_SECRET",
+
+  /* OAuth API endpoints */
+  tokenHost: "https://slack.com/",
+  tokenPath: "https://slack.com/api/openid.connect.token",
+  authorizePath: "https://slack.com/openid/connect/authorize",
+
+  /* Scope of access to request */
+  scope: 'openid email profile',
+
+  /* User API endpoint */
+  userApi: "https://slack.com/api/openid.connect.userInfo",
+}
+
 module.exports = {
   netlify,
   github,
   gitlab,
+  slack
 };
