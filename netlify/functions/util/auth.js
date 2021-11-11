@@ -2,7 +2,7 @@ const { AuthorizationCode } = require('simple-oauth2');
 const cookie = require("cookie");
 const fetch = require('node-fetch')
 
-const SITE_URL = process.env.URL || 'http://localhost:8888'
+const SITE_URL = process.env.DEPLOY_PRIME_URL || process.env.URL || 'http://localhost:8888'
 
 const providers = require('./providers.js');
 
@@ -42,7 +42,7 @@ class OAuth {
     } else if(this.provider === "slack") {
       Object.assign(cfg, providers.slack);
     } else {
-      throw new Error("Invalid provider passed to OAuth. Currently only `netlify`, `github`, `gitlab` or `slack` are supported.")
+      throw new Error("Invalid provider passed to OAuth. Currently only `netlify`, `github`, `gitlab`, or `slack` are supported.")
     }
 
     cfg.clientId = process.env[cfg.clientIdKey];
