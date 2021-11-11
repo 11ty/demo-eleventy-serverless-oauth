@@ -2,7 +2,7 @@ const { AuthorizationCode } = require('simple-oauth2');
 const cookie = require("cookie");
 const fetch = require('node-fetch')
 
-const SITE_URL = process.env.DEPLOY_PRIME_URL || process.env.URL || 'http://localhost:8888'
+const SITE_URL = process.env.DEPLOY_PRIME_URL || process.env.URL || 'http://localhost:8888';
 
 const providers = require('./providers.js');
 
