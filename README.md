@@ -30,11 +30,13 @@ This example includes Netlify, GitHub, and GitLab providers. If you only want a 
     * [GitHub OAuth](https://github.com/settings/applications/new)
     * [GitLab](https://gitlab.com/-/profile/applications)
     * [Slack](https://api.slack.com/apps) (Redirect URI must be specified in separate Oauth & Permissions section)
+    * [LinkedIn](https://www.linkedin.com/developers/apps)
 2. Add the appropriate environment variables to your `.env` file:
     * Netlify: `NETLIFY_OAUTH_CLIENT_ID` and `NETLIFY_OAUTH_CLIENT_SECRET`
     * GitHub: `GITHUB_OAUTH_CLIENT_ID` and `GITHUB_OAUTH_CLIENT_SECRET`
     * GitLab: `GITLAB_OAUTH_CLIENT_ID` and `GITLAB_OAUTH_CLIENT_SECRET`
     * Slack: `SLACK_OAUTH_CLIENT_ID` and `SLACK_OAUTH_CLIENT_SECRET`
+    * Slack: `LINKEDIN_OAUTH_CLIENT_ID` and `LINKEDIN_OAUTH_CLIENT_SECRET`
 
 For Netlify deployment you'll need to add these environment variables by defining them in Settings -> Build & Deploy -> Environment.
 
@@ -56,6 +58,7 @@ Does not have to be in a serverless template. Put it in a shared header on your 
   <button type="submit" name="provider" value="netlify">Login with Netlify</button>
   <button type="submit" name="provider" value="github">Login with GitHub</button>
   <button type="submit" name="provider" value="slack">Login with Slack</button>
+  <button type="submit" name="provider" value="linkedin">Login with Linkedin</button>
 </form>
 ```
 

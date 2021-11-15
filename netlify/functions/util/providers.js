@@ -59,9 +59,26 @@ const slack = {
   userApi: "https://slack.com/api/openid.connect.userInfo",
 }
 
+const linkedin = {
+  clientIdKey: "LINKEDIN_OAUTH_CLIENT_ID",
+  clientSecretKey: "LINKEDIN_OAUTH_CLIENT_SECRET",
+
+  /* OAuth API endpoints */
+  tokenHost: "https://linkedin.com/",
+  tokenPath: "https://www.linkedin.com/oauth/v2/accessToken",
+  authorizePath: "https://www.linkedin.com/oauth/v2/authorization",
+
+  /* Scope of access to request */
+  scope: 'r_liteprofile r_emailaddress',
+
+  /* User API endpoint */
+  userApi: "https://api.linkedin.com/v2/me?projection=(id,localizedFirstName,localizedLastName,profilePicture(displayImage~digitalmediaAsset:playableStreams))",
+}
+
 module.exports = {
   netlify,
   github,
   gitlab,
-  slack
+  slack,
+  linkedin
 };
