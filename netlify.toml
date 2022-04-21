@@ -1,6 +1,14 @@
 [build]
+command = "npx @11ty/eleventy"
 publish = "_site"
-command = "npm run build"
+
+[dev]
+framework = "#static"
+command = "npx @11ty/eleventy --quiet --watch"
+
+[[edge_functions]]
+function = "eleventy-edge"
+path = "/*"
 
 [[redirects]]
 from = "/secure/"
@@ -8,12 +16,3 @@ to = "/.netlify/functions/dynamic"
 status = 200
 force = true
 _generated_by_eleventy_serverless = "dynamic"
-
-[[redirects]]
-from = "/"
-to = "/secure/"
-status = 302
-force = true
-
-  [redirects.conditions]
-  Cookie = [ "_11ty_oauth_token" ]

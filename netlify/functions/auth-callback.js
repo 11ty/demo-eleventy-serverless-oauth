@@ -41,6 +41,24 @@ exports.handler = async (event, context) => {
     const token = accessToken.token.access_token;
     // console.log( "[auth-callback]", { token } );
 
+    let cookieHeaders = [
+      // This cookie *must* be HttpOnly
+      getCookie("_11ty_oauth_token", tokens.encode(token), oauth.config.sessionExpiration),
+      getCookie("_11ty_oauth_provider", state.provider, oauth.config.sessionExpiration),
+      getCookie("_11ty_oauth_csrf", "", -1),
+    ];
+
+    try {
+      let user = await oauth.getUser(token);
+      let avatar = user.avatar_url || user.avatar || user.picture;
+      if(avatar) {
+        cookieHeaders.push(getCookie("avatar", avatar, oauth.config.sessionExpiration));
+      }
+    } catch(e) {
+      // Do nothing
+      console.log( e );
+    }
+    
     // The noop key here is to workaround Netlify keeping query params on redirects
     // https://answers.netlify.com/t/changes-to-redirects-with-query-string-parameters-are-coming/23436/11
     const URI = `${state.url}?noop`;
@@ -54,12 +72,7 @@ exports.handler = async (event, context) => {
         'Cache-Control': 'no-cache' // Disable caching of this response
       },
       multiValueHeaders: {
-        'Set-Cookie': [
-          // This cookie *must* be HttpOnly
-          getCookie("_11ty_oauth_token", tokens.encode(token), oauth.config.sessionExpiration),
-          getCookie("_11ty_oauth_provider", state.provider, oauth.config.sessionExpiration),
-          getCookie("_11ty_oauth_csrf", "", -1),
-        ]
+        'Set-Cookie': cookieHeaders
       },
       body: '' // return body for local dev
     }

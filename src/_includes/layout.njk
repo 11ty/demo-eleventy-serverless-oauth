@@ -11,17 +11,36 @@
 		button {
 			font-family: inherit;
 		}
+		.avatar {
+			position: absolute;
+			right: 1em;
+			top: 1em;
+			border-radius: 50%;
+			border: 2px solid #000;
+		}
 		</style>
 	</head>
 	<body>
+		{% edge "liquid" %}
+		{% if eleventy.edge.cookies.avatar -%}
+			<a href="/secure/"><img src="{{ eleventy.edge.cookies.avatar | url_decode }}" alt="Avatar" width="60" height="60" class="avatar"></a>
+		{% endif %}
+		{% endedge %}
+
 		<header>
-			<h1>Eleventy Serverless OAuth Demo</h1>
+			<h1><a href="/">Eleventy Serverless OAuth Demo</a></h1>
 		</header>
 		{{ content | safe }}
 		<footer>
 			<p>
 				<a href="https://github.com/11ty/demo-eleventy-serverless-oauth">Source code on GitHub</a>
 			</p>
+			{% edge "liquid" %}
+			<details>
+				<summary><code>eleventy</code> Edge Data</summary>
+				<pre>{{ eleventy | json }}</pre>
+			</details>
+			{% endedge %}
 		</footer>
 	</body>
 </html>

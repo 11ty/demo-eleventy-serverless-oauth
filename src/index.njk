@@ -1,8 +1,18 @@
-<form action="/.netlify/functions/auth-before">
-  <input type="hidden" name="securePath" value="/secure/">
-  <button type="submit" name="provider" value="netlify">Login with Netlify</button>
-  <button type="submit" name="provider" value="github">Login with GitHub</button>
-  <button type="submit" name="provider" value="gitlab">Login with GitLab</button>
-  <button type="submit" name="provider" value="slack">Login with Slack</button>
-  <button type="submit" name="provider" value="linkedin">Login with Linkedin</button>
-</form>
+{% edge "liquid" %}
+{% if eleventy.edge.cookies.avatar %}
+  <p>You are currently logged in. Go to your <a href="/secure/">account page</a>.</p>
+  <form action="/secure/" method="get">
+    <input type="hidden" name="logout" value="">
+    <button type="submit">Logout</button>
+  </form>
+{% else %}
+  <form action="/.netlify/functions/auth-before">
+    <input type="hidden" name="securePath" value="/secure/">
+    <button type="submit" name="provider" value="netlify">Login with Netlify</button>
+    <button type="submit" name="provider" value="github">Login with GitHub</button>
+    <button type="submit" name="provider" value="gitlab">Login with GitLab</button>
+    <button type="submit" name="provider" value="slack">Login with Slack</button>
+    <button type="submit" name="provider" value="linkedin">Login with Linkedin</button>
+  </form>
+{% endif %}
+{% endedge %}

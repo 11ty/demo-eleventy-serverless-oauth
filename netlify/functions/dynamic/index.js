@@ -60,6 +60,7 @@ async function handler(event) {
         },
         multiValueHeaders: {
           'Set-Cookie': [
+            getCookie("avatar", "", -1),
             getCookie("_11ty_oauth_token", "", -1),
             getCookie("_11ty_oauth_provider", "", -1),
           ]
