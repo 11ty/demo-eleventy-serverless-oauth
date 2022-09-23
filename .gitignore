@@ -4,5 +4,6 @@ node_modules
 _site
 package-lock.json
 .netlify
+netlify/edge-functions/_generated/*
 netlify/functions/dynamic/**
 !netlify/functions/dynamic/index.js
