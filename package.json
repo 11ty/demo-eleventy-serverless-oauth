@@ -16,7 +16,7 @@
     "netlify-cli": "^10.0.0"
   },
   "dependencies": {
-    "@11ty/eleventy": "^2.0.0-canary.8",
+    "@11ty/eleventy": "2.0.0-canary.16",
     "cookie": "^0.5.0",
     "dotenv": "^10.0.0",
     "node-fetch": "^2.3.0",
